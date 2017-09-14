@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/SnowflakeOid-parent/SnowflakeOid-parent.iml" filepath="$PROJECT_DIR$/SnowflakeOid-parent/SnowflakeOid-parent.iml" />
+      <module fileurl="file://$PROJECT_DIR$/example-xhr-oid/example-xhr-oid.iml" filepath="$PROJECT_DIR$/example-xhr-oid/example-xhr-oid.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mySnowflake.iml" filepath="$PROJECT_DIR$/mySnowflake.iml" />
+    </modules>
+  </component>
+</project>
