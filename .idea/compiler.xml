@@ -6,10 +6,12 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="example-xhr-oid" />
         <module name="SnowflakeOid-parent" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="example-xhr-oid" target="1.5" />
       <module name="SnowflakeOid-parent" target="1.7" />
     </bytecodeTargetLevel>
   </component>
