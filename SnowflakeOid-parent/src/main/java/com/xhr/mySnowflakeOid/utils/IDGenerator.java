@@ -1,6 +1,7 @@
 package com.xhr.mySnowflakeOid.utils;
 
 import com.xhr.mySnowflakeOid.oid.IOidProvider;
+import com.xhr.mySnowflakeOid.oid.IdProviderFactory;
 
 /**
  * @author 徐浩然

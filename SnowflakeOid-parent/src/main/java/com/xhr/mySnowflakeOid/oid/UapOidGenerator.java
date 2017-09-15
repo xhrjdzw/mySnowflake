@@ -1,5 +1,6 @@
 package com.xhr.mySnowflakeOid.oid;
 
+import com.xhr.mySnowflakeOid.utils.ContextHolder;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -7,6 +8,7 @@ import org.slf4j.LoggerFactory;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
 
 /**
  * @author 徐浩然
@@ -64,8 +66,6 @@ public class UapOidGenerator {
     /**
      * 取得下一批 OID
      *
-     * @param tid
-     * @param date
      * @param count
      * @return String[] OID数组
      */
@@ -103,7 +103,10 @@ public class UapOidGenerator {
             /**
              * oid前八位默认取租户id
              */
-            sid = InvocationInfoProxy.getTenantid();
+            //todo 暂时屏蔽
+//            sid = InvocationInfoProxy.getTenantid();
+
+
             if(sid == null || "".equals(sid)){
                 sid = DEFAULT_SCHEMACODE;
             }
@@ -165,7 +168,7 @@ public class UapOidGenerator {
 
     private String getNewBaseId(String key) {
         // 数据库操作，从数据库中取最新值，如果没有则初始化，需要新启动事务
-        UapOidJdbcService service = (UapOidJdbcService)ContextHolder.getContext().getBean("uapOidJdbcService");
+        UapOidJdbcService service = (UapOidJdbcService) ContextHolder.getContext().getBean("uapOidJdbcService");
         return service.getInitValue(key);
     }
 

@@ -1,11 +1,11 @@
 
+import com.xhr.mySnowflakeOid.utils.ContextHolder;
+import com.xhr.mySnowflakeOid.utils.IDGenerator;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import com.yonyou.ifbp.context.ContextHolder;
-import com.yonyou.ifbp.persistence.utils.IDGenerator;
 
 public class TestIdGenerator {
 

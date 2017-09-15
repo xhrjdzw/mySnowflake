@@ -1,5 +1,6 @@
 package com.xhr.mySnowflakeOid.oid;
 
+import com.xhr.mySnowflakeOid.utils.ContextHolder;
 import com.xhr.mySnowflakeOid.utils.PropertyUtil;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;

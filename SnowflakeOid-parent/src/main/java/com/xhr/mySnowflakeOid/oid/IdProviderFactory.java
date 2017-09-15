@@ -1,9 +1,9 @@
 package com.xhr.mySnowflakeOid.oid;
 
+import com.xhr.mySnowflakeOid.utils.PropertyUtil;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import com.xhr.mySnowflakeOid.utils.PropertyUtil
 /**
  * @author 徐浩然
  * @version IdProviderFactory, 2017-09-14
