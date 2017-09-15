@@ -19,19 +19,31 @@ public class SnowFlakeProvider implements IOidProvider {
     private long sequence = 0L;
 
     /** 机器id所占的位数 */
-    private final static long workerIdBits = 6L;
+    private final static long workerIdBits = 5L;
+
+    /** 数据标识id所占的位数 */
+    private final  static long datacenterIdBits = 5L;
+
+    /** 数据中心ID(0~31) */
+    private long datacenterId;
 
     /** 支持的最大机器id，结果是31 (这个移位算法可以很快的计算出几位二进制数所能表示的最大十进制数) */
     public final static long maxWorkerId = -1L ^ -1L << workerIdBits;
 
     /** 序列在id中占的位数 */
-    private final static long sequenceBits = 10L;
+    private final static long sequenceBits = 12L;
 
-    /** 机器ID向左移10位 */
+    /** 机器ID向左移12位 */
     private final static long workerIdShift = sequenceBits;
 
+    /** 数据标识id向左移17位(12+5) */
+    private final long datacenterIdShift = sequenceBits + workerIdBits;
+
     /** 时间截向左移22位(5+5+12) */
-    private final static long timestampLeftShift = sequenceBits + workerIdBits;
+    private final static long timestampLeftShift = sequenceBits + workerIdBits+ datacenterIdBits;
+
+    /** 支持的最大数据标识id，结果是31 */
+    private final long maxDatacenterId = -1L ^ (-1L << datacenterIdBits);
 
     /** 生成序列的掩码，这里为4095 (0b111111111111=0xfff=4095) */
     public final static long sequenceMask = -1L ^ -1L << sequenceBits;
@@ -103,6 +115,7 @@ public class SnowFlakeProvider implements IOidProvider {
 
         //移位并通过或运算拼到一起组成64位的ID
         long nextId = ((timestamp - twepoch << timestampLeftShift))
+                      | (datacenterId << datacenterIdShift) //
                       | (this.workerId << SnowFlakeProvider.workerIdShift)
                       | (this.sequence);
         logger.info("timestamp:" + timestamp + ",timestampLeftShift:" + timestampLeftShift + ",nextId:" + nextId + ",workerId:" + workerId + ",sequence:" + sequence);
