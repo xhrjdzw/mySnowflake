@@ -39,7 +39,7 @@ public class UapOidJdbcService
         UapOidGenerator.OID_AMOUNT = this.stepSize;
     }
 
-    //新启动事务
+    //新启动事 务
     @Transactional(propagation= Propagation.REQUIRES_NEW)
     public String getInitValue(String schemacode) throws RuntimeException {
 
