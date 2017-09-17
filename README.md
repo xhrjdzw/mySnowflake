@@ -4,3 +4,4 @@
 包含普通的UUID、基于Redis的自增ID、和snowflake、oid算法等。
 组件提供统一接口对OID进行生成，通过配置的方式实现对几种策略的切换。
 同时支持对自定义ID生成方案的扩展。
+(redis缓存部分未完成createJedisPool)
