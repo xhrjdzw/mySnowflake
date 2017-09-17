@@ -27,7 +27,7 @@ public class UapOidGenerator {
     public static final String OID_BASE_INITIAL_VAL = UapOidAlgorithm.INIT_VALUE;
 
     //默认的租户id（schema）
-    public static final String DEFAULT_SCHEMACODE = "OID";
+    public static final String DEFAULT_SCHEMACODE = "XUHAORAN";
 
     private Object lock;
 
@@ -99,14 +99,10 @@ public class UapOidGenerator {
      */
     private String nextOid(String sid) {
         if(StringUtils.isBlank(sid)){
-            //sid = DEFAULT_SCHEMACODE;
             /**
              * oid前八位默认取租户id
              */
-            //todo 暂时屏蔽
-//            sid = InvocationInfoProxy.getTenantid();
-
-
+            //定义OID的头,如果没有动态头就使用默认头
             if(sid == null || "".equals(sid)){
                 sid = DEFAULT_SCHEMACODE;
             }
@@ -127,7 +123,7 @@ public class UapOidGenerator {
         try {
             // 加锁
             l.lock();
-
+            //确保线程安全
             oidCounter = (OidCounter) oidMap.get(key);
             if (oidCounter == null) {
                 oidCounter = new OidCounter();

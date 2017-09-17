@@ -13,9 +13,9 @@ import org.springside.modules.nosql.redis.JedisTemplate;
  */
 public class RedisIdProvider implements IOidProvider {
 
-    public static final String IUAP_PRIMARY = "IUAP_PRIMARY";
+    public static final String XHR_PRIMARY = "徐浩然";
 
-    public static final String START_VALUE = "START_VALUE";
+    public static final String START_VALUE = "开始值";
 
     private Logger logger = LoggerFactory.getLogger(RedisIdProvider.class);
 
@@ -39,16 +39,17 @@ public class RedisIdProvider implements IOidProvider {
         }
 
         String result = null;
-
+        module="TEST";
         // 根据module创建或者获取reids的key，对应的value自增
-        String key = IUAP_PRIMARY + "_" + module;
+        String key = XHR_PRIMARY + "_" + module;
 
 
         if (jt.get(key) == null) {
-            long initId = 1L;
+            long initId = 1000L;
 
             String startValueKey = key + "_" + START_VALUE;
             String settingStartValue = PropertyUtil.getPropertyByKey(startValueKey);
+            //根据配置文件获得初始种子
             if (settingStartValue != null && StringUtils.isNotBlank(settingStartValue)) {
                 initId = Long.parseLong(settingStartValue.trim());
                 logger.info("getting start value from config file,init value is {}.", new Object[]{settingStartValue});

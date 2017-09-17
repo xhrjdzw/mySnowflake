@@ -39,7 +39,7 @@ public class UapOidJdbcService
         UapOidGenerator.OID_AMOUNT = this.stepSize;
     }
 
-    //新启动事 务
+    //当数据库没有这个KEY的记录的时候  就新启动事务
     @Transactional(propagation= Propagation.REQUIRES_NEW)
     public String getInitValue(String schemacode) throws RuntimeException {
 
