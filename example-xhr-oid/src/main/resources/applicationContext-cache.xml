@@ -16,7 +16,7 @@
 
 	<description>cache、session </description>
     
-	<bean id="redisPool" class="com.yonyou.ifbp.cache.redis.RedisPoolFactory"
+	<bean id="redisPool" class="com.xhr.mySnowflakeOid.other.RedisPoolFactory"
 		scope="prototype" factory-method="createJedisPool">
 		<constructor-arg value="${redis.url}" />
 	</bean>
@@ -25,7 +25,7 @@
 		<constructor-arg ref="redisPool"></constructor-arg>
 	</bean> 
 	
-    <bean id="cacheManager" class="com.yonyou.ifbp.cache.CacheManager">
+    <bean id="cacheManager" class="com.xhr.mySnowflakeOid.other.CacheManager">
         <property name="jedisTemplate" ref="jedisTemplate"/>
     </bean>	
        
